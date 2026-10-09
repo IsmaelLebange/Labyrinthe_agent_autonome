@@ -1,0 +1,2 @@
+# L'interface utilise Tkinter et la bibliothèque HTTP standard de Python.
+# Les dépendances Python sont installées par apt dans Dockerfile.tkinter.

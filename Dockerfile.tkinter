@@ -1,0 +1,33 @@
+FROM debian:bookworm-slim
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    openbox \
+    novnc \
+    python3 \
+    python3-tk \
+    python3-venv \
+    websockify \
+    x11vnc \
+    xvfb \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:${PATH}"
+ENV DISPLAY=:99
+
+COPY requirements-gui.txt ./requirements-gui.txt
+RUN pip install --no-cache-dir -r requirements-gui.txt
+
+COPY interface/ ./interface/
+COPY environments/ ./environments/
+COPY environnement.py ./environnement.py
+
+ENV MAZE_API_URL=https://labyrinthe-agent-autonome.onrender.com
+
+EXPOSE 10000
+CMD ["sh", "/app/interface/start_novnc.sh"]

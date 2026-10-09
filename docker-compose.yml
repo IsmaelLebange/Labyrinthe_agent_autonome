@@ -1,0 +1,9 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:10000"
+    environment:
+      PORT: "10000"
+      DQN_MODEL_PATH: /app/results/dqn_v2/model.pth
+      QLEARNING_MODEL_PATH: /app/results/qlearning_improved_v2/q_table.npy

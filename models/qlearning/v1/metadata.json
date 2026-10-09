@@ -1,0 +1,7 @@
+{
+    "date": "2026-10-03",
+    "algorithm": "q-learning",
+    "statut":"factice (test du pipeline,pas un vrai entrainement)",
+    "cree_par": "Groupe5 ML/DL",
+    "notes":"Q-table aleatoire 10x10x4, utilisée pour valider le chargement et le format de reponse de l'APÏ"
+}
